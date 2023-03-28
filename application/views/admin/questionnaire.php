@@ -118,6 +118,7 @@
                                                     <?php endfor ; ?>
                                                 </select>
                                             </div>
+                                            <!-- Icon here -->
                                             <button type="submit" class="btn btn-primary">Enregistrer</button>
                                             </form>
                                         </div>
