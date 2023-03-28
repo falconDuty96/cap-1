@@ -47,22 +47,22 @@
                 <span class="menu-header-text">Parametres</span>
             </li>
             <ul class="menu-inner py-1">
-                <li class="menu-item active">
-                    <a href="index.html" class="menu-link">
+                <li class="menu-item ">
+                    <a href="<?= base_url() ?>categorie" class="menu-link">
                         <i class="menu-icon tf-icons bx bx-home-circle"></i>
                         <div data-i18n="Analytics">Categorie</div>
                     </a>
                 </li>
 
             <!-- Layouts -->
-            <li class="menu-item">
-                <a href="" class="menu-link">
+            <li class="menu-item ">
+                <a href="<?= base_url() ?>classe" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-layout"></i>
                     <div data-i18n="Layouts">Classe</div>
                 </a>
             </li>
-            <li class="menu-item">
-                <a href="" class="menu-link">
+            <li class="menu-item active">
+                <a href="<?= base_url() ?>mode" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-layout"></i>
                     <div data-i18n="Layouts">Mode</div>
                 </a>
@@ -72,7 +72,7 @@
                 <span class="menu-header-text">Questionnaires</span>
             </li>
             <li class="menu-item">
-                <a href="javascript:void(0);" class="menu-link">
+                <a href="<?= base_url() ?>questionnaire" class="menu-link">
                     <i class="menu-icon tf-icons bx bx-dock-top"></i>
                     <div data-i18n="Account Settings">Questions</div>
                 </a>
@@ -91,11 +91,11 @@
                             <div class="card" style='height: 200px;overflow-y:auto;'>
                             <div class="card-body">
                                 <div class="row">
-                                    <?= form_open('categorie/enregistrer') ?>
+                                    <?= form_open('mode/enregistrer') ?>
                                     <div class="mb-3">
-                                        <label class="form-label" for="basic-default-fullname">Categorie</label>
-                                        <input type="text" class="form-control" id="basic-default-fullname" placeholder="Inserer la categorie" name="categorie_nom" />
-                                        <?php echo form_error('categorie_nom'); ?>  
+                                        <label class="form-label" for="basic-default-fullname">Mode</label>
+                                        <input type="text" class="form-control" id="basic-default-fullname" placeholder="Inserer le mode d'examen" name="mode_nom" />
+                                        <?php echo form_error('mode_nom'); ?>  
                                     </div>
                                     <button type="submit" class="btn btn-primary">Enregistrer</button>
                                 </form>
@@ -110,22 +110,22 @@
                             <table class="table">
                                 <thead class="table-light">
                                     <tr>
-                                        <th>Categorie</th>
+                                        <th>Mode</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody class="table-border-bottom-0">
-                                    <?php for($i = 0; $i < count($categorie); $i++): ?>
+                                    <?php for($i = 0; $i < count($mode); $i++): ?>
                                         <tr>
-                                            <td><?= $categorie[$i]->categorie_nom ?></td>
+                                            <td><?= $mode[$i]->mode_nom ?></td>
                                             <td>
-                                                <a class="badge bg-label-info me-1" href="" data-bs-toggle="modal" data-bs-target="#basicModal<?= $categorie[$i]->categorie_id ?>">Modifier</a>
-                                                <a class="badge bg-label-danger me-1" href="<?= base_url() ?>Categorie/supprimer/<?= $categorie[$i]->categorie_id ;?>">Supprimer</a>
+                                                <a class="badge bg-label-info me-1" href="" data-bs-toggle="modal" data-bs-target="#basicModal<?= $mode[$i]->mode_id ?>">Modifier</a>
+                                                <a class="badge bg-label-danger me-1" href="<?= base_url() ?>Mode/supprimer/<?= $mode[$i]->mode_id ;?>">Supprimer</a>
                                             </td>
                                         </tr>
 
 
-                                        <div class="modal fade" id="basicModal<?= $categorie[$i]->categorie_id ?>" tabindex="-1" aria-hidden="true">
+                                        <div class="modal fade" id="basicModal<?= $mode[$i]->mode_id ?>" tabindex="-1" aria-hidden="true">
                                             <div class="modal-dialog" role="document">
                                                 <div class="modal-content">
                                                     <div class="modal-header">
@@ -137,12 +137,12 @@
                                                         aria-label="Close"
                                                         ></button>
                                                     </div>
-                                                    <?= form_open('categorie/modifier/'.$categorie[$i]->categorie_id) ?>
+                                                    <?= form_open('Mode/modifier/'.$mode[$i]->mode_id) ?>
                                                     <div class="modal-body">
                                                         <div class="row">
                                                             <div class="col mb-3">
-                                                                <label for="categorie" class="form-label">Categorie</label>
-                                                                <input type="text" id="categorie" class="form-control" placeholder="Inserer la categorie" name="categorie_nom" value="<?= $categorie[$i]->categorie_nom ;?>" />
+                                                                <label for="classe" class="form-label">Mode</label>
+                                                                <input type="text" id="classe" class="form-control" placeholder="Inserer le mode d'examen" name="mode_nom" value="<?= $mode[$i]->mode_nom ;?>" />
                                                             </div>
                                                         </div>
                                                     </div>

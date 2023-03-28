@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Mar 27, 2023 at 09:15 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.1.12
+-- Hôte : 127.0.0.1:3306
+-- Généré le : mar. 28 mars 2023 à 20:07
+-- Version du serveur : 8.0.31
+-- Version de PHP : 7.4.33
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,123 +18,93 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `cap`
+-- Base de données : `cap`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `categorie`
+-- Structure de la table `categorie`
 --
 
-CREATE TABLE `categorie` (
-  `categorie_id` int(11) NOT NULL,
-  `categorie_nom` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `categorie`;
+CREATE TABLE IF NOT EXISTS `categorie` (
+  `categorie_id` int NOT NULL AUTO_INCREMENT,
+  `categorie_nom` text COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`categorie_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `categorie`
+-- Déchargement des données de la table `categorie`
 --
 
 INSERT INTO `categorie` (`categorie_id`, `categorie_nom`) VALUES
-(8, 'Agents des finances publiques');
+(9, 'Agents des finances publiquess');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `classe`
+-- Structure de la table `classe`
 --
 
-CREATE TABLE `classe` (
-  `classe_id` int(11) NOT NULL,
-  `class_nom` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `classe`;
+CREATE TABLE IF NOT EXISTS `classe` (
+  `classe_id` int NOT NULL AUTO_INCREMENT,
+  `classe_nom` text COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`classe_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `classe`
+--
+
+INSERT INTO `classe` (`classe_id`, `classe_nom`) VALUES
+(10, 'Mathematiques'),
+(11, 'Philisophie'),
+(12, 'Ingenerie');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mode_examen`
+-- Structure de la table `mode`
 --
 
-CREATE TABLE `mode_examen` (
-  `mode_id` int(11) NOT NULL,
-  `mode_nom` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `mode`;
+CREATE TABLE IF NOT EXISTS `mode` (
+  `mode_id` int NOT NULL AUTO_INCREMENT,
+  `mode_nom` text COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`mode_id`)
+) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Déchargement des données de la table `mode`
+--
+
+INSERT INTO `mode` (`mode_id`, `mode_nom`) VALUES
+(4, 'Revision'),
+(3, 'Entrainement'),
+(5, 'Annales');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
-CREATE TABLE `users` (
-  `users_id` int(11) NOT NULL,
-  `users_pseudo` text NOT NULL,
-  `users_password` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `users_id` int NOT NULL AUTO_INCREMENT,
+  `users_pseudo` text COLLATE utf8mb4_general_ci NOT NULL,
+  `users_password` text COLLATE utf8mb4_general_ci NOT NULL,
+  PRIMARY KEY (`users_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`users_id`, `users_pseudo`, `users_password`) VALUES
 (1, 'admin', 'd033e22ae348aeb5660fc2140aec35850c4da997');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `categorie`
---
-ALTER TABLE `categorie`
-  ADD PRIMARY KEY (`categorie_id`);
-
---
--- Indexes for table `classe`
---
-ALTER TABLE `classe`
-  ADD PRIMARY KEY (`classe_id`);
-
---
--- Indexes for table `mode_examen`
---
-ALTER TABLE `mode_examen`
-  ADD PRIMARY KEY (`mode_id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`users_id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `categorie`
---
-ALTER TABLE `categorie`
-  MODIFY `categorie_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
---
--- AUTO_INCREMENT for table `classe`
---
-ALTER TABLE `classe`
-  MODIFY `classe_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `mode_examen`
---
-ALTER TABLE `mode_examen`
-  MODIFY `mode_id` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `users_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

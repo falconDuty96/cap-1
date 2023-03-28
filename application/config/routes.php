@@ -53,9 +53,20 @@ $route['default_controller'] = 'login';
 
 // Route for admin:
 $route['admin/connect'] = 'login/auth' ;
-$route['admin/accueil'] = 'admin' ;
+
+// Create
 $route['categorie/enregistrer'] = 'categorie/register' ;
-$route['admin/categorie'] = 'admin' ;
+$route['classe/enregistrer'] = 'classe/register' ;
+$route['mode/enregistrer'] = 'mode/register' ;
+
+
+
+
+// main root
+$route['classe'] = 'Classe' ;
+$route['categorie'] = 'Categorie' ;
+$route['mode'] = 'Mode' ;
+$route['questionnaire'] = 'Questionnaire' ;
 
 
 $route['404_override'] = '';

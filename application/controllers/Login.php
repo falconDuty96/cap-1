@@ -27,7 +27,7 @@
                 $passwd = $this->input->post('password') ;
                 $data = $this->login->getUserByPseudoAndPass($pseudo,$passwd) ;
                 if(count($data) > 0) {
-                    redirect('admin/accueil') ;
+                    redirect('categorie') ;
                 }
                 else {
                     $this->load->view('login',array(

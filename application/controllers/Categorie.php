@@ -4,11 +4,12 @@
 
         public function __construct() {
             parent::__construct() ;
-            $this->load->model("CategorieModel","categorie") ;
+            $this->load->model('CategorieModel',"categorie") ;
         }
-
         public function index() {
-            redirect('admin/categorie') ;
+            $this->load->view('admin/categorie',array(
+                'categorie' => $this->categorie->getAllCategorie() ,
+            )) ;
         }
         
         public function register() {
@@ -17,7 +18,7 @@
                 'required' => 'Ce champ est obligatoire !'
             )) ;
             if($this->form_validation->run() === FALSE) {
-                $this->load->view('admin/index',array(
+                $this->load->view('admin/categorie',array(
                     'categorie' => $this->categorie->getAllCategorie() ,
                 )) ;
             }
@@ -26,16 +27,16 @@
                     'categorie_nom' => $this->input->post('categorie_nom') ,
                 );
                 $this->categorie->registerCategorie($data) ;
-                redirect('admin/accueil') ;
+                redirect('categorie') ;
             }
         }
 
         public function supprimer($id) {
             $this->categorie->deleteCategorie($id) ;
-            redirect('admin/accueil') ;
+            redirect('categorie') ;
         } 
         public function modifier($id) {
             $this->categorie->updateCategorie($this->input->post('categorie_nom'),$id) ;
-            redirect('admin/accueil') ;
+            redirect('categorie') ;
         }
     }
